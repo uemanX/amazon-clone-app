@@ -2,28 +2,24 @@ import { RootState } from '@/app/store';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export type BasketState = {
-  count: number;
+  items: [];
 };
 
 const initialState: BasketState = {
-  count: 0,
+  items: [],
 };
 
 export const basketSlice = createSlice({
   name: 'basket',
   initialState,
   reducers: {
-    increment: (state, action: PayloadAction<number>) => {
-      state.count = state.count + action.payload;
-    },
-    decrement: (state, action: PayloadAction<number>) => {
-      state.count = state.count - action.payload;
-    },
+    addToBasket: (state, action) => {},
+    removeFromBasket: (state, action) => {},
   },
 });
 
-export const { increment, decrement } = basketSlice.actions;
+export const { addToBasket, removeFromBasket } = basketSlice.actions;
 
-export const selectCount = (state: RootState) => state.basket.count;
+export const selectItems = (state: RootState) => state.basket.items;
 
 export default basketSlice.reducer;
